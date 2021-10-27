@@ -2,6 +2,7 @@ package bruce.home.Cache.controller;
 
 import bruce.home.Cache.service.MyService;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -12,12 +13,12 @@ public class MyController {
     private MyService myService;
 
     @RequestMapping("/aaa")
-    public String aaa(int i) {
+    public String aaa(@RequestParam int i) {
         return myService.aaa(i);
     }
 
     @RequestMapping("/bbb")
-    public String bbb(int i) {
+    public String bbb(@RequestParam int i) {
         return myService.bbb(i);
     }
 

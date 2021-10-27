@@ -20,6 +20,10 @@ public class MyServiceImpl implements MyService {
 
 
     // @Cacheable("xxx")
+    // 屬性 value 相當於區域，之後可針對區域刪除
+    // 儲存到快取的 key 是參數值，如果沒有參數，預設是 「SimpleKey []」；如有多個參數，是多個參數值，如 「SimpleKey [222,abc]」
+    // 儲存到快取的 value 是回傳值
+
     // @Cacheable(value = "xxx", keyGenerator = "myKey")
     @MyCacheable("xxx")
     @Override
@@ -40,7 +44,7 @@ public class MyServiceImpl implements MyService {
     @Override
     public void getCacheData() {
         cacheManager.getCacheNames().forEach(cacheName -> {
-            Cache cache = cacheManager.getCache(cacheName);
+            Cache cache = cacheManager.getCache(cacheName); // store 可看到快取的 key-value
             System.out.println("key=" + cacheName);
         });
     }
